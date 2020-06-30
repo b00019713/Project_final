@@ -9,7 +9,7 @@ project(amcl_project)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  std_msg
+  #std_msg
 )
 
 ## System dependencies are found with CMake's conventions
