@@ -11,7 +11,6 @@
 
 <!--AMCL Node-->
 <node name="amcl" pkg="amcl" type="amcl" output="screen">
-	<!--<remap from="scan" to="amcl_project/laser/scan"/>-->
 	<remap from="scan" to="/scan"/>
 	<param name="odom_frame_id" value="odom"/>
 	<param name="odom_model_type" value="diff-corrected"/>
@@ -21,11 +20,28 @@
 	<param name="initial_pose_x" value="0.0"/>
 	<param name="initial_pose_y" value="-0.5"/>
 	<param name="initial_pose_a" value="1.57"/>
+	<!--Tuning parameters -->
+	<param name="min_particles" value="100"/>
+	<param name="max_particles" value="2000"/>
+	<param name="update_min_a" value="0.25"/>
+	<param name="update_min_d" value="0.05"/>
+
+	<param name="laser_min_range" value="-1"/>
+	<param name="laser_max_range" value="-1"/>
+	<param name="laser_z_hit" value="0.9"/>
+	<param name="laser_sigma_hit" value="0.1"/>
+	<param name="laser_likelihood_max_dist" value="4.0"/>
+	
+	<param name="odom_alpha1" value="0.01"/>
+	<param name="odom_alpha2" value="0.01"/>
+	<param name="odom_alpha3" value="0.01"/>
+	<param name="odom_alpha4" value="0.01"/>
+
 </node>
 
 <!--Move Base Node-->
 <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
-	<remap from="scan" to="amcl_project/laser/scan"/>
+	<remap from="scan" to="/scan"/>
 	<param name="base_global_planner" value="navfn/NavfnROS" />
   	<param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
 	<rosparam file="$(find amcl_project)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -35,5 +51,7 @@
   	<rosparam file="$(find amcl_project)/config/base_local_planner_params.yaml" command="load" />
 </node>
 
+<!--RVIZ config node-->
+<node name="rviz" pkg="rviz" type="rviz" args="$(find amcl_project)/rviz/rviz_config.rviz"/>
 
 </launch>
