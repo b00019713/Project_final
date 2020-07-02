@@ -1,2 +1,2 @@
 # Project_4
-Gazebo Training SLAM project
+Gazebo Training with Udacity. Lesson 5, Project 4, SLAM
