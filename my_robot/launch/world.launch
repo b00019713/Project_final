@@ -34,7 +34,7 @@
         args="-urdf -param robot_description -model my_robot 
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
-  <node name="rviz" pkg="rviz" type="rviz" respawn="false"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="$(find rtab_project)/rviz_config/rtab_project.rviz"/>
 
 </launch>
 
