@@ -34,7 +34,12 @@
         args="-urdf -param robot_description -model my_robot 
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
-  <node name="rviz" pkg="rviz" type="rviz" args="$(find rtab_project)/rviz_config/rtab_project.rviz"/>
+ 
+<!--  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+	<param name="base_frame" value="robot_footprint"/>
+  </node> -->
+
+<!-- <node name="rviz" pkg="rviz" type="rviz" args="$(find rtab_project)/rviz_config/rtab_project.rviz"/>-->
 
 </launch>
 
